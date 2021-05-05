@@ -10,6 +10,9 @@ yellow = (0, 0, 0)
 # apply it to text on a label
 
 def animar():
+    pygame.init()
+    myfont = pygame.font.SysFont("Comic Sans MS", 15)
+    yellow = (0, 0, 0)
     h_v,x_v=ecuaciones.resolver()
     h_v,x_v=round(h_v,6),round(x_v,6)
     run = True
@@ -61,13 +64,11 @@ def animar():
 top = Tk()
 top.geometry("380x640")
 def simular():
-    try:
-        ecuaciones.set_vars(float(txt4.get()),float(txt1.get()),0,float(txt2.get()),float(txt3.get()),float(txt.get()))
-        animar()
-    except:
-        ecuaciones.set_vars(0.8,0.5,0,1,2,0.6)
-        messagebox.showinfo(title="Error", message="No ingreso todas las variables")
-        animar()
+    # try:
+    ecuaciones.set_vars(float(txt.get()),float(txt1.get()),0,float(txt2.get()),float(txt3.get()),float(txt4.get()))
+    animar()
+    # except:
+    #     messagebox.showinfo(title="Error", message="No ingreso todas las variables")
 
 def default():
     ecuaciones.set_vars(0.8,0.5,0,1,2,0.6)
