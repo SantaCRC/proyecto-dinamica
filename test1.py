@@ -60,16 +60,22 @@ def animar():
 
 top = Tk()
 top.geometry("300x300")
-def helloCallBack():
+def simular():
     try:
         ecuaciones.set_vars(float(txt4.get()),float(txt1.get()),0,float(txt2.get()),float(txt3.get()),float(txt.get()))
         animar()
     except:
         ecuaciones.set_vars(0.8,0.5,0,1,2,0.6)
-        messagebox.showerror(title="Error", message="No ingreso todas las variables")
+        messagebox.showinfo(title="Error", message="No ingreso todas las variables")
         animar()
 
-B=Button(top, text = "Simular", command = helloCallBack)
+def default():
+    ecuaciones.set_vars(0.8,0.5,0,1,2,0.6)
+    messagebox.showinfo(title="Info", message="Simulando con valores por defecto")
+    animar()
+
+B=Button(top, text = "Simular", command = simular)
+B1=Button(top, text = "Caso por defecto", command = default)
 label=Label(top, text="Coeficiente bloque y superficie:")
 label.place(x=0,y=80)
 label1=Label(top, text="Masa esfera A, en kilogramos:")
@@ -79,6 +85,7 @@ txt.place(x=180,y=80)
 txt1 = Entry(top,width=10)
 txt1.place(x=180,y=100)
 B.place(x=50,y=250)
+B1.place(x=120,y=250)
 label2=Label(top, text="Masa bloque B, en kilogramos:")
 label2.place(x=0,y=120)
 txt2=Entry(top,width=10)
