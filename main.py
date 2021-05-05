@@ -2,7 +2,7 @@ import pygame, sys, math
 import ecuaciones
 from tkinter import *
 import threading
-
+from PIL import Image, ImageTk
 from tkinter import messagebox
 pygame.init()
 myfont = pygame.font.SysFont("Comic Sans MS", 15)
@@ -59,7 +59,7 @@ def animar():
     pygame.quit()
 
 top = Tk()
-top.geometry("300x300")
+top.geometry("380x640")
 def simular():
     try:
         ecuaciones.set_vars(float(txt4.get()),float(txt1.get()),0,float(txt2.get()),float(txt3.get()),float(txt.get()))
@@ -77,26 +77,33 @@ def default():
 B=Button(top, text = "Simular", command = simular)
 B1=Button(top, text = "Caso por defecto", command = default)
 label=Label(top, text="Coeficiente bloque y superficie:")
-label.place(x=0,y=80)
-label1=Label(top, text="Masa esfera A, en kilogramos:")
-label1.place(x=0,y=100)
+label.place(x=0,y=80+400)
 txt = Entry(top,width=10)
-txt.place(x=180,y=80)
+txt.place(x=180,y=80+400)
+label1=Label(top, text="Masa esfera A, en kilogramos:")
+label1.place(x=0,y=100+400)
 txt1 = Entry(top,width=10)
-txt1.place(x=180,y=100)
-B.place(x=50,y=250)
-B1.place(x=120,y=250)
+txt1.place(x=180,y=100+400)
+B.place(x=100,y=250+350)
+B1.place(x=160,y=250+350)
 label2=Label(top, text="Masa bloque B, en kilogramos:")
-label2.place(x=0,y=120)
+label2.place(x=0,y=120+400)
 txt2=Entry(top,width=10)
-txt2.place(x=180,y=120)
+txt2.place(x=180,y=120+400)
 label3=Label(top,text="Velocidad bloque B:")
-label3.place(x=0,y=140)
+label3.place(x=0,y=140+400)
 txt3=Entry(top,width=10)
-txt3.place(x=180,y=140)
+txt3.place(x=180,y=140+400)
 label4=Label(top,text="Coeficiente bloque y esfera:")
-label4.place(x=0,y=160)
+label4.place(x=0,y=160+400)
 txt4=Entry(top,width=10)
-txt4.place(x=180,y=160)
+txt4.place(x=180,y=160+400)
+enunciado=Label(top,text="Un bloque B de 1 kg se mueve con una velocidad Vo de \n magnitud Vo=2 m/s cuando golpea una esfera A de 0.5 kg, la cual esta\n en reposo y cuelga de una cuerda amarrada a O. \nSi se sabe que \u03BCk entre el bloque y la superficie horizontal \ny que e=0.8 entre el bloque y la esfera, determine despues\n del impacto, a) la altura maxima h alcanzada por la esfera , \nb) la distancia x recorrida por el bloque")
+enunciado.place(x=0,y=0)
+load = Image.open("Figura0.png")
+render = ImageTk.PhotoImage(load)
+img = Label(top, image=render)
+img.image = render
+img.place(x=2, y=120)
 
 top.mainloop()
