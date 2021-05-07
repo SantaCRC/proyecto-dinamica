@@ -38,13 +38,14 @@ def resolver():
     v_b_p=v_b_p.subs([(e,e_v),(ma,ma_v),(va,va_v),(mb,mb_v),(vb,vb_v)])
     h_v=res1[0].subs([(ma,ma_v),(vap,v_a_p)])
     x_v=res2[0].subs([(mb,mb_v),(u,u_v),(vbp,v_b_p)])
+    #print("h={} x={}".format(h_v,x_v))
     return h_v,x_v
 
 if __name__ == '__main__':
     for i in range(11):
-        set_vars(i/10,0.5,0,1,2,0.6)
+        set_vars(0.8,0.5,0,1,2+(i/10),0.6)
         h_v,x_v=resolver()
-        print("Para e={} h={} y x={}".format(i/10,h_v,x_v))
+        print("Para vb={} h={} y x={}".format(2+(i/10),h_v,x_v))
     #
     #print(x_v)
     # set_vars(0.8,0.5,0,1,2,0.6)
